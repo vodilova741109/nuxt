@@ -1,11 +1,8 @@
 <template>
   <v-row>
-    <v-col class="text-center">     
-    <Sparkline/>
+    <v-col class="text-center">
     <Circular />
-   
     </v-col>
-     <Chart />
   </v-row>
 </template>
 
@@ -15,7 +12,7 @@
 .text-center{
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 </style>
 

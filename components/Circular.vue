@@ -1,26 +1,23 @@
 <template>
- 
-
-<div class="canvas">  
-  <div class="legend">
-    <p class="title">Category</p>    
-    <ul class="caption-list" v-for="item in desserts" :key="item.name">
-      <div class="block-flex">
-        <i v-bind:style="{color: item.stroke}" class="mdi mdi-circle font-size-10 mt-1 "></i>
-      <li class="caption-item">{{ item.name }} - {{ item.percent }}%</li>
-      </div>
-      
-         
-    </ul>
-  </div>
-  
-  <svg class="chart" width="400" height="400" viewBox="0 0 50 50"  >
-    <circle class="unit" r="15.9" cx="50%" cy="50%" v-bind:style="{stroke: item.stroke}" :stroke-dasharray="item.dasharray"
-            :stroke-dashoffset="item.dashoffset" v-for="item in desserts" :key="item.name">{{ item.name }}</circle>    
-  </svg>
+  <v-col class="text-center">     
+    <Sparkline :value="getStatus()"/>
+    <div class="canvas">  
+    <div class="legend">
+      <p class="title">Category</p>    
+      <ul class="caption-list" v-for="item in desserts" :key="item.name">
+        <div class="block-flex">
+          <i v-bind:style="{color: item.stroke}" class="mdi mdi-circle font-size-10 mt-1 "></i>
+        <li class="caption-item">{{ item.name }} - {{ item.percent }}%</li>
+        </div>
+      </ul>
+    </div>
+    
+    <svg class="chart" width="400" height="400" viewBox="0 0 50 50"  >
+      <circle class="unit" r="15.9" cx="50%" cy="50%" v-bind:style="{stroke: item.stroke}" :stroke-dasharray="item.dasharray"
+              :stroke-dashoffset="item.dashoffset" v-for="item in desserts" :key="item.name">{{ item.name }}</circle>    
+    </svg>
 </div>
-
-
+    </v-col>
 
 </template>
 
@@ -35,7 +32,7 @@ export default {
           stroke:"#86cfa3",            
           dashoffset:"0",
           dasharray: "8 100",
-          percent:"8", 
+          percent: 8, 
         },
         {
           id:2,
@@ -43,56 +40,66 @@ export default {
           stroke:"#a2c6e0",                     
           dashoffset:"-8",
           dasharray: "11 100",
-          percent:"11", 
-          
-         
+          percent: 11,
         },
         {
           id:3,
           name: 'Horror Book',
           stroke:"#ffc7ec",            
           dashoffset:"-19",            
-          dasharray: "11 100",
-          percent:"11", 
+          dasharray: "31 100",
+          percent: 31, 
          
         },
         {
           id:4,
-          name: 'Smart 4k TV',
+          name: 'Smart 5k TV',
           stroke:"#f8faa0",
-          dashoffset:"-30",  
+          dashoffset:"-50",  
           dasharray: "14 100", 
-          percent:"14",      
+          percent: 14,      
         },   
         {
           id:5,
-          name: 'Smart 4k TV',
+          name: 'Smart 6k TV',
           stroke:"#adffd8",                     
-          dashoffset:"-44",
+          dashoffset:"-64",
           dasharray: "11 100",  
-          percent:"11",       
+          percent: 11,       
         }, 
         {
           id:6,
-          name: 'Smart 4k TV',
+          name: 'Smart 8k TV',
           stroke:"#f2c48f",                     
-          dashoffset:"-55",  
+          dashoffset:"-75",  
           dasharray: "10 100",
-          percent:"10",      
+          percent: 10,      
         }, 
         {
           id:7,
-          name: 'Smart 4k TV',
+          name: 'Smart  TV',
           stroke:"#e3bfe2", 
-          dashoffset:"-65",      
+          dashoffset:"-85",      
           dasharray: "35 100",  
-          percent:"35",  
+          percent: 35,  
         },         
         
       ],    
     }
   },
- 
+  methods: {
+   getStatus(){
+          let statusArr = []
+          statusArr = this.desserts.map(function(dessert) {
+            return dessert.percent;
+            }); 
+            // console.log(statusArr)      
+          return statusArr
+      },
+  },
+   mounted(){
+      // this.getStatus()
+  }
 }
 </script>
 
@@ -188,80 +195,7 @@ body {
   opacity: 0.8;
   stroke-width: 12;
 }
-/* 
-
-.caption-item:nth-child(1)::before {
-  background-color: #86cfa3;
-}
-
-.caption-item:nth-child(2)::before {
-  background-color: #a2c6e0;
-}
-
-.caption-item:nth-child(3)::before {
-  background-color: #ffc7ec;
-}
-
-.caption-item:nth-child(4)::before {
-  background-color: #f8faa0;
-}
-
-.caption-item:nth-child(5)::before {
-  background-color: #adffd8;
-}
-
-.caption-item:nth-child(6)::before {
-  background-color: #f2c48f;
-}
-
-.caption-item:nth-child(7)::before {
-  background-color: #e3bfe2;
-}
-
-
-
-
-
-.unit:nth-child(1) {
-  stroke: #86cfa3;
-  stroke-dasharray: 8 100;
-}
-
-.unit:nth-child(2) {
-  stroke: #a2c6e0;
-  stroke-dasharray: 11 100;
-  stroke-dashoffset: -8;
-}
-
-.unit:nth-child(3) {
-  stroke: #ffc7ec;
-  stroke-dasharray: 11 100;
-  stroke-dashoffset: -19;
-}
-
-.unit:nth-child(4) {
-  stroke: #f8faa0;
-  stroke-dasharray: 14 100;
-  stroke-dashoffset: -30;
-}
-
-.unit:nth-child(5) {
-  stroke: #adffd8;
-  stroke-dasharray: 11 100;
-  stroke-dashoffset: -44;
-}
-
-.unit:nth-child(6) {
-  stroke: #f2c48f;
-  stroke-dasharray: 5 100;
-  stroke-dashoffset: -55;
-}
-
-.unit:nth-child(7) {
-  stroke: #e3bfe2;
-  stroke-dasharray: 40 100;
-  stroke-dashoffset: -60;
-} */
+/* ё */
 
 
 </style>

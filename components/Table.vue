@@ -1,10 +1,10 @@
 <template>
 <div>
-<Spark :value="getPrice()"/>  
+<Spark :value="getStatus()"/>
 <!-- <Circular :value="getStatus()"/>   -->
     <v-simple-table>
           <thead>
-            <tr>
+            <tr class="header">
               <th class="text-left">No</th>
               <th class="text-left">Product's Name</th>
               <th class="text-left">Variant</th>
@@ -12,24 +12,24 @@
               <th class="text-left">Stock</th>
               <th class="text-left">Price</th>
               <th class="text-left">Sales</th>
-              <th class="text-left">Status</th>             
+              <th class="text-left">Status</th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="item in desserts" :key="item.name">
-              <td class="text-left">{{ item.id }}</td>              
+              <td class="text-left">{{ item.id }}</td>
               <td class="text-left">{{ item.name }}</td>
               <td class="text-left">{{ item.variant}}</td>
               <td class="text-left">{{ item.type }}</td>
               <td class="text-left">{{ item.stock}}</td>
-              <td class="text-left">{{ item.price }}$ </td>
+              <td class="text-left">{{ item.price }} $ </td>
+              <td class="text-left">{{ item.sales}} $</td>
               <td class="text-left"><progress v-bind:value='item.status' max="100"></progress></td>
-              <td class="text-left">{{ item.status}}</td>
             </tr>
           </tbody>
         </v-simple-table>
  <!-- https://themesbrand.com/symox/layouts/layouts-horizontal-dark.html -->
- 
+
         <!-- https://www.chartjs.org/   https://vue-chartjs.org/guide/#browser   https://developer.mozilla.org/ru/docs/Web/HTML/Element/progress-->
 </div>
 </template>
@@ -60,8 +60,8 @@ export default {
           type: 'Electronic',
           stock: 1.564,
           price: 1200,
-          sales: 1500,
-          status: 30,
+          sales: 1000,
+          status: 60,
         },
         {
          id:3,
@@ -70,8 +70,8 @@ export default {
           type: 'Electronic',
           stock: 1.564,
           price: 200,
-          sales: 300,
-          status: 70,
+          sales: 100,
+          status: 20,
         },
         {
           id:4,
@@ -91,7 +91,7 @@ export default {
           stock: 1.564,
           price: 1200,
           sales: 900,
-          status: 50,
+          status: 30,
         },
         {
           id:6,
@@ -99,8 +99,8 @@ export default {
           variant: 'Gray',
           type: 'Electronic',
           stock: 1.564,
-          price: 200,
-          sales: 900,
+          price: 900,
+          sales: 700,
           status: 100,
         },
         {
@@ -110,8 +110,8 @@ export default {
           type: 'Electronic',
           stock: 1.564,
           price: 700,
-          sales: 200,
-          status: 50,
+          sales: 500,
+          status: 30,
         },
         {
          id:8,
@@ -121,7 +121,7 @@ export default {
           stock: 1.564,
           price: 1200,
           sales: 900,
-          status: 30,
+          status: 70,
         },
         {
           id:9,
@@ -130,8 +130,8 @@ export default {
           type: 'Electronic',
           stock: 1.564,
           price: 3200,
-          sales: 900,
-          status: 50,
+          sales: 2900,
+          status: 100,
         },
         {
          id:10,
@@ -141,26 +141,26 @@ export default {
           stock: 1.564,
           price: 1200,
           sales: 900,
-          status: 50,
+          status: 20,
         },
-      ],    
+      ],
     }
-     
+
   },
   methods: {
       getPrice(){
           let priceArr = []
           priceArr = this.desserts.map(function(dessert) {
             return dessert.price;
-            });       
+            });
           return priceArr
       },
         getStatus(){
           let statusArr = []
           statusArr = this.desserts.map(function(dessert) {
             return dessert.status;
-            }); 
-            console.log(statusArr)      
+            });
+            // console.log(statusArr)
           return statusArr
       },
       //  getPricePercent(){
@@ -197,10 +197,22 @@ export default {
     height: 7px;
     width: 75px;
     border-radius: 20px;
-    border: none; 
+    border: none;
   }
-  progress::-webkit-progress-bar, progress::-moz-progress-bar, progress::-webkit-progress-value {
-    background-color: #33a186;   
+  progress::-moz-progress-bar {
+    background-color: #33a186;
     border-radius: 20px;
+  }
+
+  progress::-webkit-progress-bar {
+  background-color: #fff;
+    border-radius: 20px;
+  }
+  progress::-webkit-progress-value {
+    background-color: #33a186;
+      border-radius: 20px;
+  }
+  .header{
+    background-color: #18614f;
   }
 </style>

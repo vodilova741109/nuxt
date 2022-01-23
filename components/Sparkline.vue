@@ -33,7 +33,7 @@
       radius: 10,
       padding: 8,
       lineCap: 'round',
-      gradient: gradients[5],     
+      gradient: gradients[5],
       gradientDirection: 'top',
       gradients,
       fill: false,

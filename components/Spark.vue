@@ -1,5 +1,6 @@
 <template>
   <v-container fluid>
+    <h2>Status</h2>
     <v-sparkline
       :fill="fill"
       :gradient="selectedGradient"
@@ -14,6 +15,7 @@
     <v-divider></v-divider>
 
     <v-row>
+      <h2></h2>
       <v-col
         cols="12"
         md="6"
@@ -129,7 +131,7 @@
       padding: 8,
       radius: 10,
       width: 2,
-      
+
     }),
   }
 </script>

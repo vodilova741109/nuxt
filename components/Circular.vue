@@ -25,7 +25,6 @@
 export default {
   data() {
   return {
-
       desserts: [
         {
           id:1,
@@ -95,35 +94,37 @@ export default {
               ],
               datasets:[
                 {
-                label: 'График просмотров',
+                label: 'Просмотров',
                 borderWidth: 1,
                 backgroundColor: [
-                  'rgba(255, 99, 132, 0.2)',
-                  'rgba(54, 162, 235, 0.2)',
-                  'rgba(255, 206, 86, 0.2)',
-                  'rgba(75, 192, 192, 0.2)',
-                  'rgba(153, 102, 255, 0.2)',
-                  'rgba(255, 159, 64, 0.2)',
-                  'rgba(255, 99, 132, 0.2)',
-                  'rgba(54, 162, 235, 0.2)',
-                  'rgba(255, 206, 86, 0.2)',
-                  'rgba(75, 192, 192, 0.2)',
-                  'rgba(153, 102, 255, 0.2)',
-                  'rgba(255, 159, 64, 0.2)'
+                // "#3980c0","#51af98", "#4bafe1", "#B4B4B5", "#f1f3f4",
+
+                  // 'rgba(255, 99, 132, 0.2)',
+                  // 'rgba(54, 162, 235, 0.2)',
+                  // 'rgba(255, 206, 86, 0.2)',
+                  // 'rgba(75, 192, 192, 0.2)',
+                  // 'rgba(153, 102, 255, 0.2)',
+                  // 'rgba(255, 159, 64, 0.2)',
+                  // 'rgba(255, 99, 132, 0.2)',
+                  // 'rgba(54, 162, 235, 0.2)',
+                  // 'rgba(255, 206, 86, 0.2)',
+                  // 'rgba(75, 192, 192, 0.2)',
+                  // 'rgba(153, 102, 255, 0.2)',
+                  // 'rgba(255, 159, 64, 0.2)'
                 ],
                 borderColor: [
-                  'rgba(255,99,132,1)',
-                  'rgba(54, 162, 235, 1)',
-                  'rgba(255, 206, 86, 1)',
-                  'rgba(75, 192, 192, 1)',
-                  'rgba(153, 102, 255, 1)',
-                  'rgba(255, 159, 64, 1)',
-                  'rgba(255,99,132,1)',
-                  'rgba(54, 162, 235, 1)',
-                  'rgba(255, 206, 86, 1)',
-                  'rgba(75, 192, 192, 1)',
-                  'rgba(153, 102, 255, 1)',
-                  'rgba(255, 159, 64, 1)'
+                  // 'rgba(255,99,132,1)',
+                  // 'rgba(54, 162, 235, 1)',
+                  // 'rgba(255, 206, 86, 1)',
+                  // 'rgba(75, 192, 192, 1)',
+                  // 'rgba(153, 102, 255, 1)',
+                  // 'rgba(255, 159, 64, 1)',
+                  // 'rgba(255,99,132,1)',
+                  // 'rgba(54, 162, 235, 1)',
+                  // 'rgba(255, 206, 86, 1)',
+                  // 'rgba(75, 192, 192, 1)',
+                  // 'rgba(153, 102, 255, 1)',
+                  // 'rgba(255, 159, 64, 1)'
                 ],
                 pointBorderColor: '#2554FF',
                 data: []
@@ -134,8 +135,16 @@ export default {
              chartData.datasets[0].data.push(dessert.percent)
             return dessert.percent;
             });
+          let colorArr = []
+          colorArr = this.desserts.map(function(dessert) {
+            chartData.datasets[0].borderColor.push(dessert.stroke)
+             chartData.datasets[0].backgroundColor.push(dessert.stroke)
+            return dessert.stroke;
+            });
 
-             console.log(chartData.datasets[0].data)
+
+
+            //  console.log(chartData.datasets[0].data)
           return chartData
       },
   },
@@ -177,7 +186,7 @@ body {
   font-family: "Verdana", sans-serif;
   font-size: 18px;
   line-height: 21px;
-  color: #96b4a2;
+  color: #f8faa0;
 }
 
 .caption-list {

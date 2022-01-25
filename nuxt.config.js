@@ -1,15 +1,11 @@
 import colors from 'vuetify/es5/util/colors'
 
-export default {
- 
+export default { 
   server: {
     port: 3000, // default: 3000
     host: 'localhost', // default: localhost,
     timing: false
   },
-
-  
-
   ssr: true,
   //mode: 'universal' ,
   target:'server',

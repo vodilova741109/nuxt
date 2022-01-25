@@ -1,24 +1,23 @@
 <template>
 <div>
-<Spark :value="getStatus()"/>
-
-<!-- <Circular :value="getStatus()"/>   -->
     <v-simple-table>
           <thead>
             <tr class="header">
-              <th class="text-left">No</th>
-              <th class="text-left">Product's Name</th>
-              <th class="text-left">Variant</th>
-               <th class="text-left">Type</th>
-              <th class="text-left">Stock</th>
-              <th class="text-left">Price</th>
-              <th class="text-left">Sales</th>
-              <th class="text-left">Status</th>
+              <th class="text-left">cluster name</th>
+              <th class="text-left">status</th>
+              <th class="text-left">timed out</th>
+               <th class="text-left">number of nodes</th>
+              <th class="text-left">number of data nodes</th>
+              <th class="text-left">active primary shards</th>
+              <th class="text-left">active shards</th>
+              <th class="text-left">relocating shards</th>
+              <th class="text-left">unassigned shards</th>
+              <th class="text-left">active shards percent as number</th>
             </tr>
           </thead>
           <tbody>
-            <tr v-for="item in desserts" :key="item.name">
-              <td class="text-left">{{ item.id }}</td>
+            <tr v-for="item in health" :key="item.cluster_name">
+              <td class="text-left">{{health.active_shards_percent_as_number}}</td>
               <td class="text-left">{{ item.name }}</td>
               <td class="text-left">{{ item.variant}}</td>
               <td class="text-left">{{ item.type }}</td>
@@ -44,6 +43,7 @@ export default {
 
   data() {
     return {
+       health: {},
       desserts: [
         { id:1,
           name: 'Frozen Yogurt',
@@ -149,13 +149,7 @@ export default {
 
   },
   methods: {
-      getPrice(){
-          let priceArr = []
-          priceArr = this.desserts.map(function(dessert) {
-            return dessert.price;
-            });
-          return priceArr
-      },
+    
         getStatus(){
           let statusArr = []
           statusArr = this.desserts.map(function(dessert) {

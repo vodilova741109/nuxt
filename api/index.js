@@ -1,7 +1,8 @@
 const bodyParser = require('body-parser');
 const app = require('express')();
 const axios = require('axios')
-import dbProvider from '../db/index';
+axios.defaults.baseURL = 'http://elastic:Adminadeccd@77.223.120.153:9280/';
+// import dbProvider from '../db/index';
 
 app.use(bodyParser.json())
 
@@ -15,10 +16,8 @@ app.all('/getjson', (req, res) => {
     throw new Error(err);
   });
 })
-
-
 app.all('/posts', (req, res) => {
-  axios.get('http://elastic:MagicPatriotgorodPeremens876tghui@new-el.fabricmedia.ru:9271/posts/_search').then(resp => {
+  axios.get('/posts/_search').then(resp => {
     res.json(resp.data.hits.hits)
   }).catch(err => {
     console.log(err)
@@ -27,13 +26,35 @@ app.all('/posts', (req, res) => {
 })
 
 app.all('/post/:id', (req, res) => {
-  axios.get(`http://elastic:MagicPatriotgorodPeremens876tghui@new-el.fabricmedia.ru:9271/posts/_doc/${req.params.id}`).then(resp => {
+  axios.get(`/posts/_doc/${req.params.id}`).then(resp => {
     res.json(resp.data)
   }).catch(err => {
     console.log(err)
     throw new Error(err);
   });
 })
+
+app.all('/health', (req, res) => { 
+  //console.log('/health')
+  axios.get('http://elastic:Adminadeccd@77.223.120.153:9280/_cluster/health').then(resp => {
+    res.json(resp.data)
+  }).catch(err => {
+    console.log(err)
+    throw new Error(err);
+  });
+})
+
+app.all('/metrica', (req, res) => { 
+  //console.log('/health')
+  axios.get('https://api-metrika.yandex.net/stat/v1/data?preset=sources_summary&id=44147844').then(resp => {
+    res.json(resp.data)
+  }).catch(err => {
+    console.log(err)
+    throw new Error(err);
+  });
+})
+
+
 
 export default {
   path: '/api',
@@ -60,5 +81,9 @@ export default {
 //   return name; 
 // });
 
-
+//  http://77.223.120.153:9280/_cluster/health
+// https://www.elastic.co/guide/en/elasticsearch/reference/current/rest-apis.html
+// https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-stats.html
+// https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html
+//https://learn.javascript.ru/json
 // connection.end();

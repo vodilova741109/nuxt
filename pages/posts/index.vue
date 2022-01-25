@@ -7,6 +7,7 @@
              <a :href="`http://localhost:3000/posts/${item._id}`">
               {{item._id}} - {{item._source.title}}
               </a>
+              
            </li> 
         </ul>
     </v-col>
@@ -23,7 +24,7 @@ export default {
   },
   mounted:function(){
     let self = this
-    console.log(self.posts)
+    // console.log(self.posts)
 
   },
   methods:{},
@@ -42,3 +43,8 @@ export default {
   }
 
 </script>
+<style scoped>
+  a{
+    text-decoration: none;
+  }
+</style>

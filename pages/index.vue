@@ -2,9 +2,11 @@
   <v-row>
     <v-col class="text-center">
     <Circular />
+    <!-- {{health}} -->
     </v-col>
   </v-row>
 </template>
+
 
 
 
@@ -16,4 +18,19 @@
 }
 </style>
 
+<script>
+
+
+export default {
+  data() {
+    return {
+      // health:{}
+    }
+  },
+//   async asyncData({ $axios }) {
+//     const health = await $axios.$get('http://localhost:3000/api/health')      
+//     return { health };  
+//   }
+}
+</script>
 

@@ -1,14 +1,11 @@
 <template>
   <v-row>
-    <v-col class="text-center">
-     
-      <div>
-        
+    <v-col class="text-center">     
+      <div>        
         <Editor
           :existing-content="editorContent"
           @contentChanged="onChange"
-        />
-        
+        />        
       </div>
     </v-col>
   </v-row>
